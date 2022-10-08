@@ -54,7 +54,7 @@ class TabBarExample extends StatelessWidget {
             ),
             const Tab(
               icon: Icon(Icons.verified_user),
-              text: "Merged PR's",
+              text: "Merged Pull requests",
             ),
           ],
         ),
