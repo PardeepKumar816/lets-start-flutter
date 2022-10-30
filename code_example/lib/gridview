@@ -1,0 +1,151 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp(
+
+  ));
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: "Grid View Demo",
+      initialRoute: "/",
+      routes: {
+        // When navigating to the "/" route, build the FirstScreen widget.
+        '/': (context) => const HomePage(),
+        // When navigating to the "/second" route, build the SecondScreen widget.
+        '/second': (context) => const SecondScreen(),
+      },
+
+    );
+  }
+}
+
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Grid View Task"),
+      ),
+      body: Column(
+        children: [
+          ElevatedButton(onPressed: (){
+            setState(() {
+              Navigator.pushNamed(context, "/second");
+            });
+          }, child: Text("Click here to go the second Screen ")),
+
+          Expanded(
+            child: GridView.count(
+              crossAxisCount: 3,
+              padding: const EdgeInsets.all(8.0),
+              mainAxisSpacing: 8,
+              crossAxisSpacing: 8,
+              children: [
+                Container(
+                  height: 100,
+                  color: Colors.blueAccent,
+                  child: Text("Container 1"),
+                ),
+                Container(
+                  height: 100,
+                  color: Colors.blueAccent[200],
+                  child: Text("Container 2"),
+                ),
+                Container(
+                  height: 100,
+                  color: Colors.blue[300],
+                  child: Text("Container 3"),
+                ),
+                Container(
+                  height: 100,
+                  color: Colors.blueAccent[400],
+                  child: Text("Container 4"),
+                ),
+                Container(
+                  height: 100,
+                  color: Colors.blueGrey,
+                  child: Text("Container 5"),
+                ),
+                Container(
+                  height: 100,
+                  color: Colors.blue[600],
+                  child: Text("Container 6"),
+                ),
+                Container(
+                  height: 100,
+                  color: Colors.blueAccent[700],
+                  child: Text("Container 7"),
+                ),
+
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+class SecondScreen extends StatefulWidget {
+  const SecondScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SecondScreen> createState() => _SecondScreenState();
+}
+
+class _SecondScreenState extends State<SecondScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("This is the second Screen"),
+      ),
+      body: Column(
+
+        children: [
+          ElevatedButton(onPressed: (){
+            setState(() {
+              Navigator.pop(context);
+            });
+          }, child: Text("Go Back")),
+          Expanded(
+            child: ListView(
+              padding: const EdgeInsets.all(8),
+              children: <Widget>[
+                Container(
+                  height: 50,
+                  color: Colors.amber[600],
+                  child: const Center(child: Text('ListView Item 1')),
+                ),
+                Container(
+                  height: 50,
+                  color: Colors.amber[500],
+                  child: const Center(child: Text('ListView Item 2')),
+                ),
+                Container(
+                  height: 50,
+                  color: Colors.amber[100],
+                  child: const Center(child: Text('ListView Item 3')),
+                ),
+              ],
+            ),
+          ),
+
+        ],
+      ),
+    );
+  }
+}
+
